@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, url_for
 from flask_socketio import SocketIO
 
 
@@ -8,15 +8,17 @@ socketio = SocketIO(app)
 
 @app.route('/')
 def session():
-    return render_template('session.html', data = {'junk': 'junk value'})
-
-def call_message_received(methods=['GET', 'POST']):
-    return 'Message received.'
+    return render_template('session.html')
 
 @socketio.on('my event')
 def handle_my_custom_event(json, methods=['GET', 'POST']):
     print ('received message: ' + str(json))
-    socketio.emit('my response', json, callback=call_message_received)
+    socketio.emit('my response', json)
+
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 if __name__ == '__main__':
     socketio.run(app, debug = True)
