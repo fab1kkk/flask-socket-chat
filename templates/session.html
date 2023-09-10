@@ -14,7 +14,10 @@
             <textarea class="message" placeholder="Message" required></textarea>
             <input type="submit" value="Send!" class="submit-button">
         </form>
-        <div class="message-container" id="message-container"></div>
+        <div class="message-container" id="message-container">
+            <!-- Text will be injected here by jQuery -->
+            <!-- <div class="message-item" id="message-item"></div> -->
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -43,7 +46,8 @@
 
        socket.on('my response', function(msg) {
             if(typeof msg.user_name !== 'undefined') {
-                $('#message-container').append(msg.user_name + ': ' + msg.message + '<br>')
+                $('#message-container').append("<div class='message-item'><p>" + msg.user_name + ': ' + msg.message + "</p></div>")
+                console.log(msg)
             }
 })
 
