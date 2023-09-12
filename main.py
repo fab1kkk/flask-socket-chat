@@ -5,7 +5,7 @@ from flask import Flask, render_template
 from flask_socketio import SocketIO
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '123False'
+app.config['SECRET_KEY'] = SECRET_KEY
 app.config['DEBUG'] = True
 socketio = SocketIO(app)
 
