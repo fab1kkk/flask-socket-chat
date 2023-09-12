@@ -11,7 +11,7 @@
         <div class="chat-header">Chat</div>
         <form action="" class="chat-form" method="post">
             <input type="text" class="username" placeholder="User name" required>
-            <textarea class="message" placeholder="Message" required></textarea>
+            <textarea class="message-area" placeholder="Message" required></textarea>
             <input type="submit" value="Send!" class="submit-button">
         </form>
         <div class="message-container" id="message-container">
@@ -33,7 +33,7 @@
        var form = $('form').on('submit', function(e) {
            e.preventDefault()
            let name = $('input.username').val()
-           let msg = $('textarea.message').val()
+           let msg = $('textarea.message-area').val()
 
            socket.emit('my event', {
               user_name : name,
